@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>FreeBird | Map</title>
+		<meta name="theme-color" content="#0F0F0F">
+		<!-- <link rel="icon" href="https://vtlog.net/favicon.ico"> -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<style type="text/css">
+    		#ets2 {
+  				background-color: #E0E0E0;
+    		}
+    	</style>
+		<!-- build:css css/index.css-->
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="css/style.css?v=3"/>
+		<link rel="stylesheet" href="css/leaflet.css?v=3"/>
+		<link rel="stylesheet" href="css/draw.css?v=3"/>
+		<!-- endbuild -->
+		<!--build:js js/index.js-->
+		<script src="js/leaflet.js?v=3"></script>
+		<script type="text/javascript" src="ets2map/cities.js"></script>
+		<script type="text/javascript" src="ets2map/countries.js"></script>
+		<script type="text/javascript" src="js/draw.js?v=3"></script>
+		<!-- endbuild -->
+	</head>
+	<body>
+		<!-- <div id="search">
+			<id id="menumaps" onclick="showmenu()" ><i class="material-icons">&#xE5D2;</i></id>
+			<select id='inputtype' onchange="gotocity(this.value)">
+				<option value='0' hidden>Buscar Ciudad...</option>
+			</select>
+		</div>
+		<div id="drawer">
+			<div id="preview">
+				<center><a href="https://expresoargentinovtc.ga" target="_blank"><h2>Expreso Argentino</h2></a></center><div onclick="hidemenu()" ><i class="material-icons">&#xE5CB;</i></div>
+			</div>
+			<div id="choose" >
+				<ul>
+					<li style="padding-left:16px;color:#000000;border-top:1px;border-top-color:#E0E0E0;border-top-style:solid;height: 48px;display: flex;align-items: center;">Miembros</li>
+				</ul>
+				<ul id="list">
+					<li id="loader">
+						<img src="images/loader.gif?v=2">
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="colorpolyline" class="colorhide" ><div class="colorchoose green" onclick="setcolor('polyline.green')"></div><div class="colorchoose blue" onclick="setcolor('polyline.blue')"></div><div class="colorchoose violet" onclick="setcolor('polyline.violet')"></div><div class="colorchoose red" onclick="setcolor('polyline.red')"></div><div class="colorchoose orange" onclick="setcolor('polyline.orange')"></div><div class="colorchoose yellow" onclick="setcolor('polyline.yellow')"></div></div>
+		<div id="colorpolygon" class="colorhide" ><div class="colorchoose green" onclick="setcolor('polygon.green')"></div><div class="colorchoose blue" onclick="setcolor('polygon.blue')"></div><div class="colorchoose violet" onclick="setcolor('polygon.violet')"></div><div class="colorchoose red" onclick="setcolor('polygon.red')"></div><div class="colorchoose orange" onclick="setcolor('polygon.orange')"></div><div class="colorchoose yellow" onclick="setcolor('polygon.yellow')"></div></div>
+		<div id="toolmapinfo" title="Share Route" onclick="share()" ><i class="material-icons">&#xE161;</i></div>
+		<div id="sharebox"><div id="close" onclick="el = document.getElementById('sharebox');el.style.opacity = '0';el.style.visibility = 'hidden';"><i class="material-icons">&#xE5CD;</i></div>Here is your share link for this route<br><input id="boxlink" type="text" spellcheck="false" readonly /><br><div id="copylink" onclick="copyshare()">Copy link</div></div>
+		<div id="infopl"></div>
+		<div id="mapts" style="background-color: #252525 !important;"></div> -->
+
+		<div id="search">
+			<id id="menumaps" onclick="showmenu()" data-cf-modified-3146bd3730c02c27509778fa-=""><i class="material-icons">&#xE5D2;</i></id>
+			<select id='inputtype' onchange="gotocity(this.value)">
+				<option value='0' hidden>Select a city...</option>
+			</select>
+		</div>
+		<div id="drawer">
+			<div id="preview">
+				<div onclick=" hidemenu()" data-cf-modified-3146bd3730c02c27509778fa-=""><i class="material-icons">&#xE5CB;</i></div>
+			</div>
+			<div id="choose">
+				
+				<ul id="list">
+					<li id="loader">
+						<img src="images/loader.gif?v=2">
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="colorpolyline" class="colorhide">
+			<div class="colorchoose green" onclick=" setcolor('polyline.green')" data-cf-modified-3146bd3730c02c27509778fa-=""></div>
+			<div class="colorchoose blue" onclick=" setcolor('polyline.blue')" data-cf-modified-3146bd3730c02c27509778fa-=""></div>
+			<div class="colorchoose violet" onclick=" setcolor('polyline.violet')" data-cf-modified-3146bd3730c02c27509778fa-=""></div>
+			<div class="colorchoose red" onclick=" setcolor('polyline.red')" data-cf-modified-3146bd3730c02c27509778fa-=""></div>
+			<div class="colorchoose orange" onclick=" setcolor('polyline.orange')" data-cf-modified-3146bd3730c02c27509778fa-=""></div>
+			<div class="colorchoose yellow" onclick=" setcolor('polyline.yellow')" data-cf-modified-3146bd3730c02c27509778fa-=""></div>
+		</div>
+		<div id="colorpolygon" class="colorhide">
+			<div class="colorchoose green" onclick=" setcolor('polygon.green')" data-cf-modified-3146bd3730c02c27509778fa-=""></div>
+			<div class="colorchoose blue" onclick=" setcolor('polygon.blue')" data-cf-modified-3146bd3730c02c27509778fa-=""></div>
+			<div class="colorchoose violet" onclick=" setcolor('polygon.violet')" data-cf-modified-3146bd3730c02c27509778fa-=""></div>
+			<div class="colorchoose red" onclick=" setcolor('polygon.red')" data-cf-modified-3146bd3730c02c27509778fa-=""></div>
+			<div class="colorchoose orange" onclick=" setcolor('polygon.orange')" data-cf-modified-3146bd3730c02c27509778fa-=""></div>
+			<div class="colorchoose yellow" onclick=" setcolor('polygon.yellow')" data-cf-modified-3146bd3730c02c27509778fa-=""></div>
+		</div>
+		<div id="toolmapinfo" title="Share Route" onclick=" share()" data-cf-modified-3146bd3730c02c27509778fa-=""><i class="material-icons">&#xE161;</i></div>
+		<div id="sharebox">
+			<div id="close" onclick=" el = document.getElementById('sharebox');el.style.opacity = '0';el.style.visibility = 'hidden';" data-cf-modified-3146bd3730c02c27509778fa-=""><i
+				class="material-icons">&#xE5CD;</i></div>
+			Here is your share link for this route<br><input id="boxlink" type="text" spellcheck="false" readonly/><br>
+			<div id="copylink" onclick=" copyshare()" data-cf-modified-3146bd3730c02c27509778fa-="">Copy link</div>
+		</div>
+		<div id="infopl"></div>
+		<div id="mapts" style="background-color: #252525 !important;"></div>
+		
+
+				
+				<script type="text/javascript" src="js/new.js"></script>
+
+				
+	</body>
+</html>
